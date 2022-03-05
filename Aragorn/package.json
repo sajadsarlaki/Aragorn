@@ -1,0 +1,29 @@
+{
+  "name": "aragorn",
+  "version": "1.0.0",
+  "description": "Js lib for content creation.",
+  "main": "build/index_bundle.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "Js",
+    "content-creation",
+    "js-animation",
+    "TA"
+  ],
+  "author": "sajad-sarlaki",
+  "license": "ISC",
+  "dependencies": {
+    "ccapture.js": "^1.1.0",
+    "nodemon": "^2.0.15",
+    "plotly.js-dist-min": "^2.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
