@@ -36,7 +36,7 @@ eval("/**\n* plotly.js v2.10.0\n* Copyright 2012-2022, Plotly, Inc.\n* All right
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Plotly\": () => (/* reexport default from dynamic */ plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0___default.a)\n/* harmony export */ });\n/* harmony import */ var plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! plotly.js-dist-min */ \"./node_modules/plotly.js-dist-min/plotly.min.js\");\n/* harmony import */ var plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://$/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Plotly\": () => (/* reexport default from dynamic */ plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0___default.a)\n/* harmony export */ });\n/* harmony import */ var plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! plotly.js-dist-min */ \"./node_modules/plotly.js-dist-min/plotly.min.js\");\n/* harmony import */ var plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(plotly_js_dist_min__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://$/./src/index.js?");
 
 /***/ })
 
