@@ -4,7 +4,9 @@
   "description": "Js lib for content creation.",
   "main": "build/index_bundle.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "nodemon src/server.js",
+    "start": "npm run build && npm run serve"
   },
   "keywords": [
     "Js",
@@ -16,7 +18,10 @@
   "license": "ISC",
   "dependencies": {
     "ccapture.js": "^1.1.0",
+    "express": "^4.17.3",
+    "gsap": "^3.9.1",
     "nodemon": "^2.0.15",
+    "pixi.js": "^6.2.2",
     "plotly.js-dist-min": "^2.10.0"
   },
   "devDependencies": {
