@@ -339,10 +339,15 @@ function creatDataFrames(data){
 }
 
 function creatFrameNames(data){
-    return data[0].x.map((item, index) => `frame${index}`)
+    let xLength = data[0].x ? data[0].x.length:0
+    let yLength = data[0].y ? data[0].y.length:0
+
+    let dataLength = Math.max(xLength,yLength);
+    return new Array(dataLength).fill(1).map((item, index) => `frame${index}`)
 }
 
-function startAnimation(id, frameNames) {
+function startAnimation(id, data) {
+    let frameNames = creatFrameNames(data);
     Plotly.animate(id, frameNames, {
         frame: [
             {duration: 1000},
@@ -354,6 +359,22 @@ function startAnimation(id, frameNames) {
         ],
         mode: 'afterall'
     })}
+
+
+function Chart (id,data, layout){
+    let dataframes = creatDataFrames(data);
+    let frameNames = creatFrameNames(data);
+
+    Plotly.newPlot(id,data,
+        layout? layout :
+
+         { "width": 600, "height": 400}
+    ).then(
+        function (){
+            Plotly.addFrames(id, dataframes );
+        }
+    )
+}
 
 
 export {
@@ -374,5 +395,6 @@ export {
     wobble,
     creatDataFrames,
     creatFrameNames,
-    startAnimation
+    startAnimation,
+    Chart
 }
