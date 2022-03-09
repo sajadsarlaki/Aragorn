@@ -311,11 +311,30 @@ const fadeIn = (el, opt) => {
 
 // chart animations
 function creatDataFrames(data){
-    return data[0].x.map((item, index) => {
-        return {
-            data: [{x: data[0].x.slice(0, index + 1), y: data[0].y.slice(0, index + 1)}],
-            name: `frame${index}`
-        }
+    let xLength = data[0].x ? data[0].x.length:0
+    let yLength = data[0].y ? data[0].y.length:0
+
+    let dataLength = Math.max(xLength,yLength);
+    return new Array(dataLength).fill(1).map((item, index) => {
+        if (xLength && yLength)
+            return {
+                data: [{ x: data[0].x.slice(0, index + 1), y: data[0].y.slice(0, index + 1)}],
+                name: `frame${index}`
+            }
+        else if (yLength)
+            return {
+                data: [{y: data[0].y.slice(0, index + 1)}],
+                name: `frame${index}`
+            }
+        else if (xLength)
+            return {
+                data: [{x: data[0].x.slice(0, index + 1)}],
+                name: `frame${index}`
+            }
+        else
+            return new Error("invalid data chart.")
+
+
     })
 }
 
