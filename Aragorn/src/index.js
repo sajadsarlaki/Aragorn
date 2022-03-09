@@ -1,9 +1,9 @@
 import * as Plotly from 'plotly.js-dist-min';
 import * as PIXI from 'pixi.js';
-import {gsap as Gsap} from "gsap";
+import {gsap as Animation} from "gsap";
 
 // text Animations
-const rollIn = (el, opt) => {
+const textRollIn = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
         {...opt,
@@ -29,7 +29,7 @@ const rollIn = (el, opt) => {
             },
         })
 }
-const tada = (el, opt) => {
+const textTada = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -55,7 +55,7 @@ const tada = (el, opt) => {
                 },
             })
 }
-const flash = (el, opt) => {
+const textFlash = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -81,7 +81,7 @@ const flash = (el, opt) => {
                 },
             })
 }
-const bounce = (el, opt) => {
+const textBounce = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -106,7 +106,7 @@ const bounce = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const swing = (el, opt) => {
+const textSwing = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -131,7 +131,7 @@ const swing = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const shake = (el, opt) => {
+const textShake = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -156,7 +156,7 @@ const shake = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const wobble = (el, opt) => {
+const textWobble = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -181,7 +181,7 @@ const wobble = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const pulse = (el, opt) => {
+const textPulse = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -206,7 +206,7 @@ const pulse = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const flip = (el, opt) => {
+const textFlip = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -231,7 +231,7 @@ const flip = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const flipInX = (el, opt) => {
+const textFlipInX = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -256,7 +256,7 @@ const flipInX = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const flipInY = (el, opt) => {
+const textFlipInY = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -281,7 +281,7 @@ const flipInY = (el, opt) => {
                     callback: function () {}
                 },
             })}
-const fadeIn = (el, opt) => {
+const textFadeIn = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
             {...opt,
@@ -311,90 +311,102 @@ const fadeIn = (el, opt) => {
 
 // chart animations
 function creatDataFrames(data){
-    let xLength = data[0].x ? data[0].x.length:0
-    let yLength = data[0].y ? data[0].y.length:0
+    return data.map((trace, idx)=>{
+        let xLength = trace.x ? trace.x.length:0
+        let yLength = trace.y ? trace.y.length:0
+        let dataLength = Math.max(xLength,yLength);
+        return new Array(dataLength).fill(1).map((item, index) => {
+            if (xLength && yLength)
+                return {
+                    data: [{ x: trace.x.slice(0, index + 1), y: trace.y.slice(0, index + 1)}],
+                    name: `frame${idx}-${index}`,
+                    group: `class${idx}`
+                }
+            else if (yLength)
+                return {
+                    data: [{y: trace.y.slice(0, index + 1)}],
+                    name: `frame${idx}-${index}`,
+                    group: `class${idx}`
 
-    let dataLength = Math.max(xLength,yLength);
-    return new Array(dataLength).fill(1).map((item, index) => {
-        if (xLength && yLength)
-            return {
-                data: [{ x: data[0].x.slice(0, index + 1), y: data[0].y.slice(0, index + 1)}],
-                name: `frame${index}`
-            }
-        else if (yLength)
-            return {
-                data: [{y: data[0].y.slice(0, index + 1)}],
-                name: `frame${index}`
-            }
-        else if (xLength)
-            return {
-                data: [{x: data[0].x.slice(0, index + 1)}],
-                name: `frame${index}`
-            }
-        else
-            return new Error("invalid data chart.")
+                }
+            else if (xLength)
+                return {
+                    data: [{x: trace.x.slice(0, index + 1)}],
+                    name: `frame${idx}-${index}`,
+                    group: `class${idx}`
 
-
+                }
+            else
+                return new Error("invalid data chart.")
+        })
     })
+
+
+
 }
 
 function creatFrameNames(data){
-    let xLength = data[0].x ? data[0].x.length:0
-    let yLength = data[0].y ? data[0].y.length:0
-
-    let dataLength = Math.max(xLength,yLength);
-    return new Array(dataLength).fill(1).map((item, index) => `frame${index}`)
+    return data.map((trace, idx)=>  {
+        let xLength = trace.x ? trace.x.length:0
+        let yLength = trace.y ? trace.y.length:0
+        let dataLength = Math.max(xLength,yLength);
+        return new Array(dataLength).fill(1).map((item, index) => `frame${idx}-${index}`)}
+)
 }
 
-function startAnimation(id, data) {
-    let frameNames = creatFrameNames(data);
-    Plotly.animate(id, frameNames, {
-        frame: [
-            {duration: 1000},
-            {duration: 500},
-        ],
-        transition: [
-            {duration: 800, easing: 'elastic-in'},
-            {duration: 100, easing: 'cubic-in'},
-        ],
-        mode: 'afterall'
-    })}
+function startChartAnimation(id, cls) {
+            // let frameNames = creatFrameNames(data);
+            //  frameNames.forEach(trace => {
+            //      console.log(trace)
+                 Plotly.animate(id,cls, {
+                     transition: {
+                         duration: 500,
+                         easing: 'linear'
+                     },
+                     frame: {
+                         duration: 500,
+                         redraw: true,
+                     },
+                     mode: 'afterall'
+                 })
+   }
+
 
 
 function Chart (id,data, layout){
     let dataframes = creatDataFrames(data);
-    let frameNames = creatFrameNames(data);
-
     Plotly.newPlot(id,data,
         layout? layout :
-
          { "width": 600, "height": 400}
-    ).then(
-        function (){
-            Plotly.addFrames(id, dataframes );
-        }
+    ).then(()=>
+        dataframes.forEach(trace => {
+                Plotly.addFrames(id, trace );
+        })
+
     )
+    console.log(dataframes)
 }
 
 
 export {
     Plotly,
     PIXI,
-    Gsap,
-    rollIn,
-    tada,
-    flash,
-    shake,
-    fadeIn,
-    flip,
-    flipInX,
-    flipInY,
-    pulse,
-    swing,
-    bounce,
-    wobble,
+    Animation,
+    textFlipInX,
+    textFlash,
+    textFlip,
+    textPulse,
+    textFlipInY,
+    textRollIn,
+    textShake,
+    textSwing,
+    textTada,
+    textWobble,
+    textBounce,
+    textFadeIn,
     creatDataFrames,
     creatFrameNames,
-    startAnimation,
-    Chart
+    startChartAnimation,
+    Chart,
+
 }
