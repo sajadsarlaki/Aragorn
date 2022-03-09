@@ -44,7 +44,6 @@ var data = [{
 }];
 
 
-
 var layoutUsingTemplate = {
     template: template,
 
@@ -58,27 +57,16 @@ var layoutUsingTemplate = {
 };
 
 
-Aragorn.Plotly.newPlot("myDiv", data, layoutUsingTemplate,{showSendToCloud:true}).then(function () {
-    Aragorn.Plotly.addFrames('myDiv', [
-        {
-            data: [{x: [0,0,0,0,0,0],y: [0,0,0,0,0,0]}],
-            name: 'frame1'
-        }, {
-            data:data,
-            name: 'frame2'
-        }
-    ]);
-});
-function startAnimation() {
-    Aragorn.Plotly.animate('myDiv', ['frame1', 'frame2'], {
-        frame: [
-            {duration: 1500},
-            {duration: 500},
-        ],
-        transition: [
-            {duration: 800, easing: 'elastic-in'},
-            {duration: 100, easing: 'cubic-in'},
-        ],
-        mode: 'afterall'
-    })}
-Aragorn.Gsap.to("#myDiv", {rotation: 360, x: 100, duration: 1});
+
+
+// 3 steps to animat a chart
+let dataframes = Aragorn.creatDataFrames(data);
+let frameNames = Aragorn.creatFrameNames(data);
+Aragorn.Plotly.newPlot('myDiv', data, layoutUsingTemplate,{showSendToCloud:true}).then(function () {
+    Aragorn.Plotly.addFrames('myDiv', dataframes );})
+
+
+// Aragorn.Gsap.to("#myDiv", {rotation: 360, x: 100, duration: 1});
+document.getElementById('animat-btn').addEventListener('click',()=>Aragorn.startAnimation('myDiv', frameNames))
+
+Aragorn.flip('.tlt');

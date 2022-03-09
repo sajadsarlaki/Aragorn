@@ -1,8 +1,8 @@
-
 import * as Plotly from 'plotly.js-dist-min';
 import * as PIXI from 'pixi.js';
 import {gsap as Gsap} from "gsap";
 
+// text Animations
 const rollIn = (el, opt) => {
     $(el).textillate(
         opt? {...opt,inEffects: ['rollIn']}:
@@ -309,6 +309,34 @@ const fadeIn = (el, opt) => {
 
 
 
+// chart animations
+function creatDataFrames(data){
+    return data[0].x.map((item, index) => {
+        return {
+            data: [{x: data[0].x.slice(0, index + 1), y: data[0].y.slice(0, index + 1)}],
+            name: `frame${index}`
+        }
+    })
+}
+
+function creatFrameNames(data){
+    return data[0].x.map((item, index) => `frame${index}`)
+}
+
+function startAnimation(id, frameNames) {
+    Plotly.animate(id, frameNames, {
+        frame: [
+            {duration: 1000},
+            {duration: 500},
+        ],
+        transition: [
+            {duration: 800, easing: 'elastic-in'},
+            {duration: 100, easing: 'cubic-in'},
+        ],
+        mode: 'afterall'
+    })}
+
+
 export {
     Plotly,
     PIXI,
@@ -324,5 +352,8 @@ export {
     pulse,
     swing,
     bounce,
-    wobble
+    wobble,
+    creatDataFrames,
+    creatFrameNames,
+    startAnimation
 }
