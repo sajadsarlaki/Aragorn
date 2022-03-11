@@ -388,6 +388,17 @@ function Chart (id,data, layout){
 }
 
 
+function drawFunc (id, func, start, end, step, layout) {
+    let Ys = []
+    let Xs = []
+    for (let i = 0; i <= 2*end; i++) {
+        let input =  start + step * i;
+        Xs[i] = input
+        Ys[i] = func(input);
+    }
+    Chart(id, [{x:Xs, y:Ys}], layout);
+}
+
 export {
     Plotly,
     PIXI,
@@ -408,5 +419,6 @@ export {
     creatFrameNames,
     startChartAnimation,
     Chart,
+    drawFunc
 
 }
