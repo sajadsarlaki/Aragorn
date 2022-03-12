@@ -1,10 +1,9 @@
 
 
-
 var trace1 = {
     x: [1, 2, 3, 4,10],
     y: [10, 15, 13, 17,11],
-    type: 'scatter'
+    // type: 'scatter'
 };
 
 var trace2 = {
@@ -13,13 +12,17 @@ var trace2 = {
     type: 'scatter'
 };
 
-var data = [trace1, trace2];
+var data = [{
+    x: [0, 0],
+    y: [-1, 1],
+}];
 
 
 
 // 3 steps to animat a chart
 // Aragorn.Chart("gd", data)
-
+// const dataNames = Aragorn.creatFrameNames(data);
+// console.log(dataNames)
 // document.getElementById('animat-btn').addEventListener('click',()=> Aragorn.startChartAnimation('gd', 'class0'))
 // document.getElementById('animat-btn2').addEventListener('click',()=> Aragorn.startChartAnimation('gd', 'class1'))
 
@@ -45,11 +48,13 @@ Aragorn.textFlash('.tlt')
 // }
 
 function f1(x){
-    return x*x*x
+    return Math.sin(x)*Math.sin(x)
 }
 
 // const newData = [{x: new Array(100).fill(1).map((item, index) => index), y:generatePoint(f1)}];
 // console.log(newData)
-// Aragorn.Chart('myIv', newData)
+const newData = Aragorn.drawFunc('myIv', f1, -Math.PI,Math.PI,0.1 )
+const names = Aragorn.creatFrameNames(newData, 9);
+console.log(names)
 
-Aragorn.drawFunc('myIv',f1,-100,100,1)
+document.getElementById('animat-btn2').addEventListener('click',()=> {Aragorn.startChartAnimation('myIv', names)})

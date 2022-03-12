@@ -311,47 +311,46 @@ const textFadeIn = (el, opt) => {
 
 // chart animations
 function creatDataFrames(data){
-    return data.map((trace, idx)=>{
-        let xLength = trace.x ? trace.x.length:0
-        let yLength = trace.y ? trace.y.length:0
+        let xLength = data[0].x ? data[0].x.length:0
+        let yLength = data[0].y ? data[0].y.length:0
         let dataLength = Math.max(xLength,yLength);
         return new Array(dataLength).fill(1).map((item, index) => {
             if (xLength && yLength)
                 return {
-                    data: [{ x: trace.x.slice(0, index + 1), y: trace.y.slice(0, index + 1)}],
-                    name: `frame${idx}-${index}`,
-                    group: `class${idx}`
+                    data: [{ x: data[0].x.slice(0, index + 1), y: data[0].y.slice(0, index + 1)}],
+                    name: `frame${index}`,
+                    // group: `class${idx}`
                 }
             else if (yLength)
                 return {
-                    data: [{y: trace.y.slice(0, index + 1)}],
-                    name: `frame${idx}-${index}`,
-                    group: `class${idx}`
+                    data: [{y: data[0].y.slice(0, index + 1)}],
+                    name: `frame${index}`,
+                    // group: `class${idx}`
 
                 }
             else if (xLength)
                 return {
-                    data: [{x: trace.x.slice(0, index + 1)}],
-                    name: `frame${idx}-${index}`,
-                    group: `class${idx}`
+                    data: [{x: data[0].x.slice(0, index + 1)}],
+                    name: `frame${index}`,
+                    // group: `class${idx}`
 
                 }
             else
                 return new Error("invalid data chart.")
         })
-    })
+
 
 
 
 }
 
-function creatFrameNames(data){
-    return data.map((trace, idx)=>  {
-        let xLength = trace.x ? trace.x.length:0
-        let yLength = trace.y ? trace.y.length:0
+function creatFrameNames(data, NOF){
+        let xLength = data[0].x ? data[0].x.length:0
+        let yLength = data[0].y ? data[0].y.length:0
         let dataLength = Math.max(xLength,yLength);
-        return new Array(dataLength).fill(1).map((item, index) => `frame${idx}-${index}`)}
-)
+        return new Array(dataLength).fill(1).map((item, index) => {
+            if(index % NOF === 0 || index === dataLength-1)
+            return `frame${index}`})
 }
 
 function startChartAnimation(id, cls) {
@@ -359,14 +358,14 @@ function startChartAnimation(id, cls) {
             //  frameNames.forEach(trace => {
             //      console.log(trace)
                  Plotly.animate(id,cls, {
-                     transition: {
-                         duration: 500,
-                         easing: 'linear'
-                     },
-                     frame: {
-                         duration: 500,
-                         redraw: true,
-                     },
+                     frame: [
+                         {duration: 500},
+                         {duration: 500},
+                     ],
+                     transition: [
+                         {duration: 500, easing: 'elastic-in'},
+                         {duration: 500, easing: 'cubic-in'},
+                     ],
                      mode: 'afterall'
                  })
    }
@@ -375,28 +374,31 @@ function startChartAnimation(id, cls) {
 
 function Chart (id,data, layout){
     let dataframes = creatDataFrames(data);
+    console.log(dataframes)
     Plotly.newPlot(id,data,
         layout? layout :
          { "width": 600, "height": 400}
     ).then(()=>
-        dataframes.forEach(trace => {
-                Plotly.addFrames(id, trace );
-        })
+                Plotly.addFrames(id, dataframes )
 
     )
-    console.log(dataframes)
+
+
+
 }
 
 
 function drawFunc (id, func, start, end, step, layout) {
     let Ys = []
     let Xs = []
-    for (let i = 0; i <= 2*end; i++) {
-        let input =  start + step * i;
-        Xs[i] = input
-        Ys[i] = func(input);
+    for (let i = start; i <= end; i+=step) {
+        Xs.push(i)
+        Ys.push(func(i));
     }
-    Chart(id, [{x:Xs, y:Ys}], layout);
+    const data = [{x:Xs, y:Ys}];
+    Chart(id, data, layout);
+
+    return data;
 }
 
 export {
