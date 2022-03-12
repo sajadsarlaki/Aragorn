@@ -26,7 +26,7 @@ var data = [{
 // document.getElementById('animat-btn').addEventListener('click',()=> Aragorn.startChartAnimation('gd', 'class0'))
 // document.getElementById('animat-btn2').addEventListener('click',()=> Aragorn.startChartAnimation('gd', 'class1'))
 
-// Aragorn.Animation.to('#gd',{duration: 2, scaleX: 0.5, scaleY: 0.5, easel: {tint: 0x00FF00}})
+// Aragorn.animation.effects.fade(".box");
 
 Aragorn.textFlash('.tlt')
 
@@ -48,13 +48,17 @@ Aragorn.textFlash('.tlt')
 // }
 
 function f1(x){
-    return Math.sin(x)*Math.sin(x)
+    return x*x*x
+}
+function f2(x){
+    return x*x
 }
 
 // const newData = [{x: new Array(100).fill(1).map((item, index) => index), y:generatePoint(f1)}];
 // console.log(newData)
-const newData = Aragorn.drawFunc('myIv', f1, -Math.PI,Math.PI,0.1 )
-const names = Aragorn.creatFrameNames(newData, 9);
-console.log(names)
+ Aragorn.fantasyDrawFunc('myIv', 1, f1, -Math.PI,Math.PI,0.1,9,100 )
 
-document.getElementById('animat-btn2').addEventListener('click',()=> {Aragorn.startChartAnimation('myIv', names)})
+
+document.getElementById('change').addEventListener('click',()=> Aragorn.fantasyDrawFunc('myIv', 0, f2, -Math.PI,Math.PI,0.1,3,100))
+
+

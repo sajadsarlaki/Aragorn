@@ -345,22 +345,22 @@ function creatDataFrames(data){
 }
 
 function creatFrameNames(data, NOF){
-        let xLength = data[0].x ? data[0].x.length:0
-        let yLength = data[0].y ? data[0].y.length:0
+        let xLength = data[0].x  ? data[0].x.length:0;
+        let yLength = data[0].y  ? data[0].y.length:0;
         let dataLength = Math.max(xLength,yLength);
         return new Array(dataLength).fill(1).map((item, index) => {
             if(index % NOF === 0 || index === dataLength-1)
             return `frame${index}`})
 }
 
-function startChartAnimation(id, cls) {
+function startChartAnimation(id, cls, duration) {
             // let frameNames = creatFrameNames(data);
             //  frameNames.forEach(trace => {
             //      console.log(trace)
                  Plotly.animate(id,cls, {
                      frame: [
-                         {duration: 500},
-                         {duration: 500},
+                         {duration: duration},
+                         {duration: duration},
                      ],
                      transition: [
                          {duration: 500, easing: 'elastic-in'},
@@ -372,9 +372,10 @@ function startChartAnimation(id, cls) {
 
 
 
-function Chart (id,data, layout){
+function Chart (id,actual, data, layout){
     let dataframes = creatDataFrames(data);
     console.log(dataframes)
+    if (actual)
     Plotly.newPlot(id,data,
         layout? layout :
          { "width": 600, "height": 400}
@@ -382,7 +383,15 @@ function Chart (id,data, layout){
                 Plotly.addFrames(id, dataframes )
 
     )
+else {
+        Plotly.react(id,data,
+            layout? layout :
+                { "width": 600, "height": 400}
+        ).then(()=>
+            Plotly.addFrames(id, dataframes )
 
+        )
+    }
 
 
 }
@@ -396,9 +405,27 @@ function drawFunc (id, func, start, end, step, layout) {
         Ys.push(func(i));
     }
     const data = [{x:Xs, y:Ys}];
-    Chart(id, data, layout);
+    Plotly.newPlot(id,data,
+        layout? layout :
+            { "width": 800, "height": 600}
+    )
 
-    return data;
+
+
+
+}
+function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration ,layout ){
+
+    let Ys = []
+    let Xs = []
+    for (let i = start; i <= end; i+=step) {
+        Xs.push(i)
+        Ys.push(func(i));
+    }
+    const data = [{x:Xs, y:Ys}];
+    Chart(id, actual, data, layout)
+    const names = creatFrameNames(data, NOF);
+    setTimeout(()=>startChartAnimation(id, names, duration),30)
 }
 
 export {
@@ -421,6 +448,7 @@ export {
     creatFrameNames,
     startChartAnimation,
     Chart,
-    drawFunc
+    drawFunc,
+    fantasyDrawFunc
 
 }
