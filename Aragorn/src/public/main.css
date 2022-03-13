@@ -4,7 +4,7 @@ margin: 0;
 padding: 0;
 }
 .box{
-    background-color: deepskyblue;
+    /*background-color: deepskyblue;*/
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -17,7 +17,7 @@ canvas{
 
 }
 #myDiv{
-    background-color: black;
+    /*background-color: black;*/
     height: 400px;
     width: 600px;
 }

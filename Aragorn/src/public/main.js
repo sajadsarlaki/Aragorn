@@ -1,23 +1,9 @@
 
 
-var trace1 = {
-    x: [1, 2, 3, 4,10],
-    y: [10, 15, 13, 17,11],
-    // type: 'scatter'
-};
-
-var trace2 = {
-    x: [1, 2, 3, 4],
-    y: [16, 5, 11, 9],
-    type: 'scatter'
-};
-
-var data = [{
-    x: [0, 0],
-    y: [-1, 1],
-}];
-
-
+// var data = [{
+//     x: [0, 0],
+//     y: [-1, 1],
+// }];
 
 // 3 steps to animat a chart
 // Aragorn.Chart("gd", data)
@@ -57,8 +43,28 @@ function f2(x){
 // const newData = [{x: new Array(100).fill(1).map((item, index) => index), y:generatePoint(f1)}];
 // console.log(newData)
  Aragorn.fantasyDrawFunc('myIv', 1, f1, -Math.PI,Math.PI,0.1,9,100 )
+//
+document.getElementById('change').addEventListener('click',()=> Aragorn.drawFunc('myIv', 1, f2, -1000,1000,1))
 
 
-document.getElementById('change').addEventListener('click',()=> Aragorn.fantasyDrawFunc('myIv', 0, f2, -Math.PI,Math.PI,0.1,3,100))
+ // ---- pixi ---
+let PIXI = Aragorn.PIXI;
+const app = new PIXI.Application();
+document.body.appendChild(app.view);
 
+// 1. Create a Pixi renderer and define size and a background color
+
+var circle = new PIXI.Graphics();
+// define outline = stroke
+circle.lineStyle(20, 0x91CF46, 1);
+// draw circle (x, y, radius)
+circle.drawCircle(app.view.width / 2, app.view.height / 2, 100);
+
+
+app.stage.addChild(circle)
+
+let velocity = 1;
+app.ticker.add(()=>{
+    circle.x += velocity
+})
 

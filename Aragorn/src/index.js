@@ -1,7 +1,7 @@
 import * as Plotly from 'plotly.js-dist-min';
 import * as PIXI from 'pixi.js';
 import {gsap as Animation} from "gsap";
-
+import * as dat from 'dat.gui';
 // text Animations
 const textRollIn = (el, opt) => {
     $(el).textillate(
@@ -397,7 +397,7 @@ else {
 }
 
 
-function drawFunc (id, func, start, end, step, layout) {
+function drawFunc (id,actual, func, start, end, step, layout) {
     let Ys = []
     let Xs = []
     for (let i = start; i <= end; i+=step) {
@@ -405,10 +405,16 @@ function drawFunc (id, func, start, end, step, layout) {
         Ys.push(func(i));
     }
     const data = [{x:Xs, y:Ys}];
+    actual?
     Plotly.newPlot(id,data,
         layout? layout :
             { "width": 800, "height": 600}
-    )
+    ):
+        Plotly.react(id,data,
+            layout? layout :
+                { "width": 800, "height": 600}
+        )
+
 
 
 
@@ -449,6 +455,8 @@ export {
     startChartAnimation,
     Chart,
     drawFunc,
-    fantasyDrawFunc
+    fantasyDrawFunc,
+    dat
+
 
 }
