@@ -2,6 +2,8 @@
 body{
 margin: 0;
 padding: 0;
+    background-color: #14171D;
+
 }
 .box{
     /*background-color: deepskyblue;*/
@@ -10,12 +12,11 @@ padding: 0;
     border-radius: 10px;
 }
 
-/*canvas{*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    border: 1px solid black;*/
+canvas{
 
-/*}*/
+    background-color: #14171D;
+
+}
 #myDiv{
     /*background-color: black;*/
     height: 400px;

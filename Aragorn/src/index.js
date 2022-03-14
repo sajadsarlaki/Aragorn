@@ -1,6 +1,17 @@
 import * as Plotly from 'plotly.js-dist-min';
 import * as PIXI from 'pixi.js';
+window.PIXI = PIXI
+
+import { PixiPlugin } from "gsap/PixiPlugin";
 import {gsap as Animation} from "gsap";
+import { TweenMax, CSSPlugin, ScrollTo } from 'gsap/all'
+// because of three shaking
+const gsapPlugins = [ TweenMax, CSSPlugin, PixiPlugin, ScrollTo ]
+// register the plugin
+Animation.registerPlugin(PixiPlugin);
+PixiPlugin.registerPIXI(PIXI);
+Animation.registerPlugin(gsapPlugins);
+
 import * as dat from 'dat.gui';
 // text Animations
 const textRollIn = (el, opt) => {
