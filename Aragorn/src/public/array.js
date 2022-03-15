@@ -47,6 +47,7 @@ document.body.appendChild(main);
 // ------------------------------- PIXI -------------------------------------
 let PIXI = Aragorn.PIXI;
 const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0x14171D });
+app.view.setAttribute('id','mainCanvas');
 document.body.appendChild(app.view);
 
 
@@ -146,11 +147,33 @@ app.ticker.add((delta) => {
 
     }
 
-
-
-
 });
 
 
 
+
+
+// ---------------------------- Recorder Example --------------------------
+// let recorder = new Aragorn.Recorder('box');
+// const rec = recorder.recorderGenerator();
+//
+// let recording = document.createElement('button');
+// recording.innerText = 'recording'
+// recording.setAttribute('id','recording');
+// recording.addEventListener("click", ()=>{
+//     console.log(document.querySelector('canvas'))
+//     recorder.recordFunction(1, rec, document.body)
+// })
+//
+// let stopIt = document.createElement('button');
+// stopIt.innerText = 'StopIT'
+// stopIt.setAttribute('id','stop');
+// stopIt.addEventListener("click", ()=>{
+//     recorder.recordFunction(0, rec)
+// })
+//
+// document.body.appendChild(recording)
+// document.body.appendChild(stopIt)
+//
+//
 

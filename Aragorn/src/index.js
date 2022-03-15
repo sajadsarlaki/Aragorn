@@ -1,8 +1,13 @@
+//plotly
 import * as Plotly from 'plotly.js-dist-min';
+
+//pixi
 import * as PIXI from 'pixi.js';
 window.PIXI = PIXI
 import WebMWriter from 'webm-writer';
 import { PixiPlugin } from "gsap/PixiPlugin";
+
+//gsap
 import {gsap as Animation} from "gsap";
 import { TweenMax, CSSPlugin, ScrollTo } from 'gsap/all'
 // because of three shaking
@@ -12,7 +17,12 @@ Animation.registerPlugin(PixiPlugin);
 PixiPlugin.registerPIXI(PIXI);
 Animation.registerPlugin(gsapPlugins);
 
+//dat
 import * as dat from 'dat.gui';
+
+//recorder
+import Recorder from './public/js/recorder';
+// ======================================= implementation ===========================================
 // text Animations
 const textRollIn = (el, opt) => {
     $(el).textillate(
@@ -468,6 +478,7 @@ export {
     drawFunc,
     fantasyDrawFunc,
     dat,
+    Recorder
 
 
 

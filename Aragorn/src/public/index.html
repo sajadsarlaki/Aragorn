@@ -13,13 +13,22 @@
 </head>
 <body>
 <!--<video class="video" width="0px" controls></video>-->
+<canvas id="box"></canvas>
 
-<!--<div class="box">  </div>-->
+
 <script src="./js/textillate-master/jquery.textillate.js"></script>
 <script src="./build/index_bundle.js"></script>
 <!--<script src="main.js"></script>-->
 <script src="array.js"></script>
-<script src="./js/capture.js"></script>
+<script>
+    const canvas = document.getElementById('box');
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'green';
+
+    setInterval(()=>{ctx.fillRect(Math.random()*100, 10, 150, 100);},100,ctx)
+</script>
+<!--<script src="js/recorder.js"></script>-->
 
 </body>
 </html>
