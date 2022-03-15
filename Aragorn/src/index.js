@@ -4,7 +4,6 @@ import * as Plotly from 'plotly.js-dist-min';
 //pixi
 import * as PIXI from 'pixi.js';
 window.PIXI = PIXI
-import WebMWriter from 'webm-writer';
 import { PixiPlugin } from "gsap/PixiPlugin";
 
 //gsap

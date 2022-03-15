@@ -149,7 +149,7 @@ app.ticker.add((delta) => {
 
 
 // ---------------------------- Recorder Example --------------------------
-let recorder = new Aragorn.Recorder('htmlCanvas');
+let recorder = new Aragorn.Recorder('mainCanvas');
 const rec = recorder.recorderGenerator();
 
 let recording = document.createElement('button');

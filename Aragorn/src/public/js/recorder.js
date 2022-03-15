@@ -4,7 +4,7 @@
          // init the recorder
     }
     recorderGenerator(){
-        let stream = this.canvas.captureStream(); // grab our canvas MediaStream
+        let stream = this.canvas.captureStream(30); // grab our canvas MediaStream
         return  new MediaRecorder(stream);
     }
 
