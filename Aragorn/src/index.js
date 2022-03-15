@@ -22,6 +22,9 @@ import * as dat from 'dat.gui';
 
 //recorder
 import Recorder from './public/js/recorder';
+
+
+
 // ======================================= implementation ===========================================
 // text Animations
 const textRollIn = (el, opt) => {
@@ -455,6 +458,41 @@ function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration ,lay
     setTimeout(()=>startChartAnimation(id, names, duration),30)
 }
 
+// ---------------------------- html to canvas
+function renderHtmlToCanvas(html, ctx, x, y, width, height) {
+    var xml = html_to_xml(html);
+    xml = xml.replace(/\#/g, '%100');
+    var data = "data:image/svg+xml;charset=utf-8,"+'<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'">' +
+        '<foreignObject width="100%" height="100%">' +
+        xml+
+        '</foreignObject>' +
+        '</svg>';
+
+    var img = new Image();
+    img.onload = function () {
+        console.log(img);
+        ctx.drawImage(img, 0,0);
+    }
+    img.src = data;
+}
+function html_to_xml(html) {
+    var doc = document.implementation.createHTMLDocument('');
+
+
+
+
+    doc.write(html);
+
+    // You must manually set the xmlns if you intend to immediately serialize
+    // the HTML document to a string as opposed to appending it to a
+    // <foreignObject> in the DOM
+    doc.documentElement.setAttribute('xmlns', doc.documentElement.namespaceURI);
+
+    // Get well-formed markup
+    html = (new XMLSerializer).serializeToString(doc.body);
+    return html;
+}
+
 export {
     Plotly,
     PIXI,
@@ -478,8 +516,8 @@ export {
     drawFunc,
     fantasyDrawFunc,
     dat,
-    Recorder
-
+    Recorder,
+    renderHtmlToCanvas
 
 
 }

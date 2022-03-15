@@ -4,31 +4,25 @@
     <meta charset="UTF-8">
     <title>Aragorn</title>
     <link rel="stylesheet" href="main.css">
-    <link href="./js/textillate-master/assets/animate.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="./js/textillate-master/assets/jquery.lettering.js"></script>
+    <link href="./js/textillate-master/assets/animate.css" rel="stylesheet">
 
+    <script src="./js/textillate-master/assets/jquery.lettering.js"></script>
 
 
 </head>
 <body>
-<!--<video class="video" width="0px" controls></video>-->
-<canvas id="box"></canvas>
+<div id="title">Queue Visual Example</div>
+<!--<canvas id="canvas1">Queue Visual Example</canvas>-->
+
+
+<canvas id="htmlCanvas"></canvas>
 
 
 <script src="./js/textillate-master/jquery.textillate.js"></script>
 <script src="./build/index_bundle.js"></script>
 <!--<script src="main.js"></script>-->
-<script src="array.js"></script>
-<script>
-    const canvas = document.getElementById('box');
-    const ctx = canvas.getContext('2d');
-
-    ctx.fillStyle = 'green';
-
-    setInterval(()=>{ctx.fillRect(Math.random()*100, 10, 150, 100);},100,ctx)
-</script>
-<!--<script src="js/recorder.js"></script>-->
+<script src="examples/queue.js"></script>
 
 </body>
 </html>
