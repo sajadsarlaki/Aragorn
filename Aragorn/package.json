@@ -17,14 +17,14 @@
   "author": "sajad-sarlaki",
   "license": "ISC",
   "dependencies": {
-    "ccapture.js": "^1.1.0",
     "dat.gui": "^0.7.9",
     "express": "^4.17.3",
     "gsap": "^3.9.1",
     "nodemon": "^2.0.15",
     "pixi-spine": "^3.0.13",
     "pixi.js": "^6.2.2",
-    "plotly.js-dist-min": "^2.10.0"
+    "plotly.js-dist-min": "^2.10.0",
+    "webm-writer": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

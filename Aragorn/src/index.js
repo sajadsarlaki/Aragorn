@@ -1,7 +1,7 @@
 import * as Plotly from 'plotly.js-dist-min';
 import * as PIXI from 'pixi.js';
 window.PIXI = PIXI
-
+import WebMWriter from 'webm-writer';
 import { PixiPlugin } from "gsap/PixiPlugin";
 import {gsap as Animation} from "gsap";
 import { TweenMax, CSSPlugin, ScrollTo } from 'gsap/all'
@@ -467,7 +467,8 @@ export {
     Chart,
     drawFunc,
     fantasyDrawFunc,
-    dat
+    dat,
+
 
 
 }

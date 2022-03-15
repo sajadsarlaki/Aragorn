@@ -23,23 +23,32 @@ dequeueBtn.addEventListener("click", ()=>{
 
 
 
-
  let list = document.createElement('ul');
  list.setAttribute('id', 'list');
  list.style.display = 'flex';
  list.style.flexDirection = 'row';
  list.style.border = '1px solid black';
 
+
+
+
+// ---------------------------------- screen capture
+
+
+
+
 main.appendChild(input);
 main.appendChild(submit);
 main.appendChild(dequeueBtn);
 main.appendChild(list);
+
 document.body.appendChild(main);
 
 // ------------------------------- PIXI -------------------------------------
 let PIXI = Aragorn.PIXI;
 const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0x14171D });
 document.body.appendChild(app.view);
+
 
 
 const letters = [];
@@ -140,6 +149,8 @@ app.ticker.add((delta) => {
 
 
 
-
-
 });
+
+
+
+
