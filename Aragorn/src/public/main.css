@@ -19,6 +19,7 @@ padding: 0;
 /*}*/
 #myDiv{
     /*background-color: black;*/
-    height: 400px;
-    width: 600px;
+    height: 100%;
+    width: 100%;
 }
+

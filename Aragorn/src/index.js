@@ -21,7 +21,7 @@ import * as dat from 'dat.gui';
 
 //recorder
 import Recorder from './public/js/recorder';
-
+import htmlRecorder from './public/js/htmlRecorder';
 
 
 // ======================================= implementation ===========================================
@@ -516,7 +516,7 @@ export {
     fantasyDrawFunc,
     dat,
     Recorder,
-    renderHtmlToCanvas
-
+    renderHtmlToCanvas,
+    htmlRecorder
 
 }

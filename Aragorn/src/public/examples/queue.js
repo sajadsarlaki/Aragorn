@@ -42,10 +42,9 @@ document.body.appendChild(main);
 
 // ------------------------------- PIXI -------------------------------------
 let PIXI = Aragorn.PIXI;
-const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0x14171D });
+const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0xffffff });
 app.view.setAttribute('id','mainCanvas');
 document.body.appendChild(app.view);
-
 
 
 const letters = [];
@@ -101,7 +100,6 @@ function insert(item){
     if (item){
         let container = addLetter(item, parent, 0xffffff, height,width,{x: letters.length * (width ) , y: 0});
         addArrow(0xff00ff, 50,50,{x:  (letters.length ) * width,y:0}, parent)
-
     }
     // console.log(letters.length)
 
@@ -121,15 +119,15 @@ function  dequeue(){
 
 
 
-
 const bg =  PIXI.Sprite.from('./imgs/smok.png');
 bg.position = {x:100, y:0}
 bg.width = 1500;
 bg.height = 900;
 bg.tint = 0x1100ff
-Aragorn.Animation.fromTo(bg, 5, {
-    pixi: { x: 100 , y:-20, lineWidth: 5, fillColor: 0x0088f7 }},{
-    pixi: { x: 100 , y:0, lineWidth: 5, fillColor: 0x0088f7 }
+Aragorn.Animation.fromTo(bg, 2, {
+    pixi: { x: 0 , y:-200, lineWidth: 5, fillColor: 0x0088f7 }},{
+    pixi: { x: 100 , y:20, lineWidth: 5, fillColor: 0x0088f7 },
+    delay: 3
 });
 app.stage.addChild(bg)
 
@@ -171,7 +169,7 @@ document.body.appendChild(recording)
 document.body.appendChild(stopIt)
 
 // --------------------------- example of htmlToCanvas ------------------
-let htmlcanvas = document.getElementById('htmlCanvas');
+let htmlcanvas = document.getElementById('canvas2');
 var ctx = htmlcanvas.getContext('2d');
 
 const html = `
