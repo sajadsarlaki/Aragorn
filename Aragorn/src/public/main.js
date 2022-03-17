@@ -60,3 +60,5 @@ function f2(x){
 
 // -------------------------- Example of html recorder--------------
 Aragorn.htmlRecorder ('myDiv', 'background-canvas', 'btn-start-recording', 'btn-stop-recording', 'timer', 'counter', 'preview-video' )
+
+Aragorn.textRollIn('.title')

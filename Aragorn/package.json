@@ -23,8 +23,7 @@
     "nodemon": "^2.0.15",
     "pixi-spine": "^3.0.13",
     "pixi.js": "^6.2.2",
-    "plotly.js-dist-min": "^2.10.0",
-    "webm-writer": "^1.0.0"
+    "plotly.js-dist-min": "^2.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
