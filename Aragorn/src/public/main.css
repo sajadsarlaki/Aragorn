@@ -12,14 +12,15 @@ padding: 0;
     border-radius: 10px;
 }
 
-/*#htmlCanvas{*/
-/*background-color: white;*/
-/*    !*padding: 100px;*!*/
-/*    width: 800px;*/
-/*}*/
+#htmlCanvas{
+background-color: white;
+    /*padding: 100px;*/
+    width: 850px;
+    height: 500px;
+}
 #myDiv{
     /*background-color: black;*/
-    height: 100%;
-    width: 100%;
+    width: 850px;
+    height: 500px;
 }
 

@@ -386,8 +386,8 @@ function startChartAnimation(id, cls, duration) {
                          {duration: duration},
                      ],
                      transition: [
-                         {duration: 500, easing: 'elastic-in'},
-                         {duration: 500, easing: 'cubic-in'},
+                         {duration: duration, easing: 'easeInOutElastic'},
+                         {duration: duration, easing: 'easeInOutBounce'},
                      ],
                      mode: 'afterall'
                  })
@@ -397,7 +397,6 @@ function startChartAnimation(id, cls, duration) {
 
 function Chart (id,actual, data, layout){
     let dataframes = creatDataFrames(data);
-    console.log(dataframes)
     if (actual)
     Plotly.newPlot(id,data,
         layout? layout :
@@ -420,14 +419,31 @@ else {
 }
 
 
-function drawFunc (id,actual, func, start, end, step, layout) {
+function drawFunc (id,actual, func, start, end, step, mode, chartObjStyle, layout) {
     let Ys = []
     let Xs = []
     for (let i = start; i <= end; i+=step) {
         Xs.push(i)
         Ys.push(func(i));
     }
-    const data = [{x:Xs, y:Ys}];
+
+    const data = [{x:Xs, y:Ys, mode:mode} ];
+    console.log(data)
+
+    switch (mode){
+        case 'lines':
+            data[0].line = chartObjStyle
+            break;
+        case 'markers':
+            data[0].marker = chartObjStyle
+            break;
+        case 'lines+markers':
+            data[0].marker = chartObjStyle
+            data[0].line = chartObjStyle
+            break;
+
+    }
+    console.log(chartObjStyle)
     actual?
     Plotly.newPlot(id,data,
         layout? layout :
@@ -443,7 +459,7 @@ function drawFunc (id,actual, func, start, end, step, layout) {
 
 
 }
-function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration ,layout ){
+function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration, mode, chartObjStyle ,layout ){
 
     let Ys = []
     let Xs = []
@@ -451,8 +467,20 @@ function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration ,lay
         Xs.push(i)
         Ys.push(func(i));
     }
-    const data = [{x:Xs, y:Ys}];
-    Chart(id, actual, data, layout)
+    const data = [{x:Xs, y:Ys, mode:mode}];
+    switch (mode) {
+        case 'lines':
+            data[0].line = chartObjStyle
+            break;
+        case 'markers':
+            data[0].marker = chartObjStyle
+            break;
+        case 'lines+markers':
+            data[0].marker = chartObjStyle
+            data[0].line = chartObjStyle
+            break;
+    }
+            Chart(id, actual, data, layout)
     const names = creatFrameNames(data, NOF);
     setTimeout(()=>startChartAnimation(id, names, duration),30)
 }

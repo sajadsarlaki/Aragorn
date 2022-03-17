@@ -3,7 +3,7 @@
 var data = [{
     x: [0, 0],
     y: [-1, 1],
-}];
+    mode: 'line',}];
 
 // 3 steps to animat a chart
 //
@@ -50,13 +50,39 @@ function expretion (x){
 }
 
 function f1(x){
-    return x*x*x
+
+
+
+    let fx = ((Math.sqrt(Math.cos(x))*Math.cos(400*x) +
+        Math.sqrt(Math.abs(x))-0.4)*(4-x*x)^0.1 )
+    return    fx === 0 ? (fx + Math.random()*4) * Math.random() * 10 : fx * Math.random() * 10
+
+
 }
 function f2(x){
     return x*x
 }
 
- Aragorn.fantasyDrawFunc('myDiv', 1, f1, -Math.PI,Math.PI,0.1,5,1000 )
+//  Aragorn.drawFunc('myDiv', 1, f1, -1,1,0.0007,'markers',
+//      {
+//     color: 'rgb(255, 121, 191)',
+//         width: 100,
+//          size:7
+// })
+
+Aragorn.fantasyDrawFunc('myDiv', 10, f1, -1,1,0.0005, 50, 1, 'lines+markers',
+    {
+        color: 'rgb(255, 0, 0)',
+        width: 15,
+        size:25
+    },
+    {
+        width:  800,
+        height: 450,
+        title: "House Prices vs Size"
+    }
+    )
+// Aragorn.Chart('myDiv',1, data)
 
 // -------------------------- Example of html recorder--------------
 Aragorn.htmlRecorder ('myDiv', 'background-canvas', 'btn-start-recording', 'btn-stop-recording', 'timer', 'counter', 'preview-video' )

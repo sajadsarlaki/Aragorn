@@ -1,5 +1,5 @@
 {
-  "name": "aragorn",
+  "name": "aragorn-js",
   "version": "1.0.0",
   "description": "Js lib for content creation.",
   "main": "build/index_bundle.js",
@@ -14,7 +14,12 @@
     "js-animation",
     "TA"
   ],
-  "author": "sajad-sarlaki",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sajadsarlaki/Aragorn.git"
+  },
+
+  "author": "Sajad Sarlaki",
   "license": "ISC",
   "dependencies": {
     "dat.gui": "^0.7.9",
