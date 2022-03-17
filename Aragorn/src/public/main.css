@@ -2,7 +2,7 @@
 body{
 margin: 0;
 padding: 0;
-    background-color: #14171D;
+background-color: black;
 
 }
 .box{
@@ -13,13 +13,13 @@ padding: 0;
 }
 
 #htmlCanvas{
-background-color: white;
+background-color: black;
     /*padding: 100px;*/
-    width: 850px;
+    width: 500px;
     height: 500px;
 }
 #myDiv{
-    /*background-color: black;*/
+    background-color: black;
     width: 850px;
     height: 500px;
 }

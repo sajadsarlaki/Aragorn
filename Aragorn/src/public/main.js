@@ -55,7 +55,7 @@ function f1(x){
 
     let fx = ((Math.sqrt(Math.cos(x))*Math.cos(400*x) +
         Math.sqrt(Math.abs(x))-0.4)*(4-x*x)^0.1 )
-    return    fx === 0 ? (fx + Math.random()*4) * Math.random() * 10 : fx * Math.random() * 10
+    return    ((fx === 0) && (x > 1.5 ) || (x < -1.5)) ?  fx : fx + Math.random() * -2
 
 
 }
@@ -70,16 +70,19 @@ function f2(x){
 //          size:7
 // })
 
-Aragorn.fantasyDrawFunc('myDiv', 10, f1, -1,1,0.0005, 50, 1, 'lines+markers',
+Aragorn.drawFunc('myDiv', 10, f1, -3.5,3.5,0.0008, 'markers',
     {
-        color: 'rgb(255, 0, 0)',
-        width: 15,
-        size:25
+        // color: `rgb(${ Math.random()*255},${ Math.random()*255},${ Math.random()*255}})`,
+        color:'rgb(150,0,0)',
+        width: 1.5,
+        size:1.5
     },
     {
+        plot_bgcolor:"black",
+        paper_bgcolor:"black",
         width:  800,
         height: 450,
-        title: "House Prices vs Size"
+        title: "heart"
     }
     )
 // Aragorn.Chart('myDiv',1, data)
@@ -88,3 +91,9 @@ Aragorn.fantasyDrawFunc('myDiv', 10, f1, -1,1,0.0005, 50, 1, 'lines+markers',
 Aragorn.htmlRecorder ('myDiv', 'background-canvas', 'btn-start-recording', 'btn-stop-recording', 'timer', 'counter', 'preview-video' )
 
 Aragorn.textRollIn('.title')
+
+Aragorn.Animation.to('#myDiv',
+    {scale:1,  delay:0.2, repeat:-1}
+)
+Aragorn.Animation.to("#myDiv",
+    {scale:1.05,  delay:0.1, repeat:-1})
