@@ -30,3 +30,13 @@ background-color: black;
     background-color: #9ab87a;
 
 }
+
+.vjs-icon-record-start>span{
+    width: 25px;
+    height: 25px;
+    background-color: #550000;
+    border: 5px solid #550000;
+    margin-left: 4px;
+
+    border-radius: 20px;
+}

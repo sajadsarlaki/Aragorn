@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="main.css">
     <link href="./js/textillate-master/assets/animate.css" rel="stylesheet">
     <script src="./js/webcamRecorder.js"></script>
+
     <script>webcamRecorder()</script>
+    <meta charset="utf-8">
+    <title>Audio/Video Example - Record Plugin for Video.js</title>
+
 
 </head>
 
@@ -14,16 +18,14 @@
 
 <style>
 
-    html, body {
-        margin: 0!important;
-        padding: 0!important;
-        color: white;
-    }
 
-    video {
-        width: auto;
-        max-width: 100%;
-    }
+         /* change player background color */
+     #myVideo {
+         background-color: #9ab87a;
+     }
+
+
+
 </style>
 
 <h1 class="title"> Aragorn: Webgl Content Maker </h1>
@@ -44,13 +46,10 @@
 <!--<div id="myDiv"></div>-->
 <div>
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-
-
-
-
-
 </div>
-<video id='video' autoplay></video>
+<div>
+    <video id='video' autoplay></video>
+</div>
 
 <canvas id="background-canvas" style="position:absolute; top:-99999999px; left:-9999999999px;"></canvas>
 <script src="./js/textillate-master/assets/jquery.js"></script>

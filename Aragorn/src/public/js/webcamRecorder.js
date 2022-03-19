@@ -114,7 +114,23 @@ async function webcamRecorder(){
            console.log('started recording!');
        });
 
-           // user completed recording and stream is available
+   // >span{
+   //         display: block; !important;
+   //         border: 10px solid #8D121A;
+   //     }
+
+       let startBtn = document.querySelector('.vjs-device-button>span');
+       startBtn.innerText = 'Camera'
+       startBtn.style.padding = '25px';
+       startBtn.style.borderRadius = '75px';
+       startBtn.style.backgroundColor = '#008800';
+
+
+
+
+
+
+       // user completed recording and stream is available
            player.on('finishRecord', function() {
            // the blob object contains the recorded data that
            // can be downloaded by the user, stored on server etc.
