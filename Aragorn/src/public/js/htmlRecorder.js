@@ -46,7 +46,7 @@ module.exports = function recorder (elementToRecordId, canvas2dId, btnStartId, b
         loaderInterval = setInterval(()=>{
             timer.innerHTML = `${currentTime}s     recording  ${new Array(Math.floor(Math.random() * 10) + 2).fill('.').join(' ')}`
             currentTime += 1
-        }, 1000, currentTime)
+        }, 100, currentTime)
         this.disabled = true;
 
         isStoppedRecording = false;

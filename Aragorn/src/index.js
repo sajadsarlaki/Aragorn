@@ -485,6 +485,9 @@ function fantasyDrawFunc (id, actual, func, start, end, step, NOF, duration, mod
     setTimeout(()=>startChartAnimation(id, names, duration),30)
 }
 
+
+
+
 // ---------------------------- html to canvas
 function renderHtmlToCanvas(html, ctx, x, y, width, height) {
     var xml = html_to_xml(html);

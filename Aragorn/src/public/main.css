@@ -18,9 +18,15 @@ background-color: black;
     width: 500px;
     height: 500px;
 }
-#myDiv{
-    background-color: black;
-    width: 850px;
-    height: 500px;
-}
+/*#recorde-scree{*/
+/*    background-color: black;*/
+/*    width: 1200px;*/
+/*    height: 800px;*/
+/*}*/
 
+#myVideo{
+    width: 500px;
+    height: 500px;
+    background-color: #9ab87a;
+
+}

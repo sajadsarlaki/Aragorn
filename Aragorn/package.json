@@ -18,7 +18,6 @@
     "type": "git",
     "url": "git+https://github.com/sajadsarlaki/Aragorn.git"
   },
-
   "author": "Sajad Sarlaki",
   "license": "ISC",
   "dependencies": {
@@ -28,7 +27,8 @@
     "nodemon": "^2.0.15",
     "pixi-spine": "^3.0.13",
     "pixi.js": "^6.2.2",
-    "plotly.js-dist-min": "^2.10.0"
+    "plotly.js-dist-min": "^2.10.0",
+    "videojs-record": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

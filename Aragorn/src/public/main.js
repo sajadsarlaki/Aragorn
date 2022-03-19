@@ -50,9 +50,6 @@ function expretion (x){
 }
 
 function f1(x){
-
-
-
     let fx = ((Math.sqrt(Math.cos(x))*Math.cos(400*x) +
         Math.sqrt(Math.abs(x))-0.4)*(4-x*x)^0.1 )
     return    ((fx === 0) && (x > 1.5 ) || (x < -1.5)) ?  fx : fx + Math.random() * -2
@@ -75,7 +72,7 @@ Aragorn.drawFunc('myDiv', 10, f1, -3.5,3.5,0.0008, 'markers',
         // color: `rgb(${ Math.random()*255},${ Math.random()*255},${ Math.random()*255}})`,
         color:'rgb(150,0,0)',
         width: 1.5,
-        size:1.5
+        size:1.5,
     },
     {
         plot_bgcolor:"black",
@@ -96,4 +93,4 @@ Aragorn.Animation.to('#myDiv',
     {scale:1,  delay:0.2, repeat:-1}
 )
 Aragorn.Animation.to("#myDiv",
-    {scale:1.05,  delay:0.1, repeat:-1})
+    {scale:1.02,  delay:0.1, repeat:-1})
