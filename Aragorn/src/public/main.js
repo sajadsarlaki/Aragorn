@@ -67,26 +67,28 @@ function f2(x){
 //          size:7
 // })
 
-Aragorn.drawFunc('myDiv', 10, f1, -3.5,3.5,0.0008, 'markers',
-    {
-        // color: `rgb(${ Math.random()*255},${ Math.random()*255},${ Math.random()*255}})`,
-        color:'rgb(150,0,0)',
-        width: 1.5,
-        size:1.5,
-    },
-    {
-        plot_bgcolor:"black",
-        paper_bgcolor:"black",
-        width:  800,
-        height: 450,
-        title: "heart"
-    }
-    )
+// Aragorn.drawFunc('myDiv', 10, f1, -3.5,3.5,0.0008, 'markers',
+//     {
+//         // color: `rgb(${ Math.random()*255},${ Math.random()*255},${ Math.random()*255}})`,
+//         color:'rgb(150,0,0)',
+//         width: 1.5,
+//         size:1.5,
+//     },
+//     {
+//         plot_bgcolor:"black",
+//         paper_bgcolor:"black",
+//         width:  800,
+//         height: 450,
+//         title: "heart"
+//     }
+//     )
 // Aragorn.Chart('myDiv',1, data)
 
 // -------------------------- Example of html recorder--------------
-Aragorn.htmlRecorder ('myDiv', 'background-canvas', 'btn-start-recording', 'btn-stop-recording', 'timer', 'counter', 'preview-video' )
-
+Aragorn.htmlRecorder ('record-this', 'background-canvas', 'btn-start-recording', 'btn-stop-recording', 'timer', 'counter', 'preview-video' )
+// let canvasR = new Aragorn.Recorder('background-canvas');
+// let rec = canvasR.recorderGenerator();
+// canvasR.recordFunction(1, rec, document.getElementById('myDiv'),10000)
 Aragorn.textRollIn('.title')
 
 Aragorn.Animation.to('#myDiv',

@@ -83,7 +83,7 @@ async function webcamRecorder(){
            record: {
            audio: true,
            video: true,
-           maxLength: 10,
+           maxLength: 1000,
            debug: true
        }
        }
