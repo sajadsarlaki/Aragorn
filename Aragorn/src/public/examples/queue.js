@@ -50,7 +50,7 @@ document.body.appendChild(app.view);
 const letters = [];
 const arrows = [];
 function addLetter(letter, parent, color,height,width , pos) {
-    const bg =  PIXI.Sprite.from('../imgs/circle.png');
+    const bg =  PIXI.Sprite.from('./imgs/circle.png');
     // const bg = new PIXI.Graphics();
     bg.width = width;
     bg.height = height;
@@ -75,7 +75,7 @@ function addLetter(letter, parent, color,height,width , pos) {
     return container;
 }
 function addArrow(color, width, height , pos, parent){
-    const arrow =  PIXI.Sprite.from('../imgs/arrow.png');
+    const arrow =  PIXI.Sprite.from('./imgs/arrow.png');
     arrow.width = width;
     arrow.height = height;
     arrow.tint = color;
@@ -144,43 +144,43 @@ app.ticker.add((delta) => {
 });
 
 
-
-
-// ---------------------------- Recorder Example --------------------------
-let recorder = new Aragorn.Recorder('mainCanvas');
-const rec = recorder.recorderGenerator();
-
-let recording = document.createElement('button');
-recording.innerText = 'recording'
-recording.setAttribute('id','recording');
-recording.addEventListener("click", ()=>{
-    console.log(document.querySelector('canvas'))
-    recorder.recordFunction(1, rec, document.body)
-})
-
-let stopIt = document.createElement('button');
-stopIt.innerText = 'StopIT'
-stopIt.setAttribute('id','stop');
-stopIt.addEventListener("click", ()=>{
-    recorder.recordFunction(0, rec)
-})
-
-document.body.appendChild(recording)
-document.body.appendChild(stopIt)
-
-// --------------------------- example of htmlToCanvas ------------------
-let htmlcanvas = document.getElementById('canvas2');
-var ctx = htmlcanvas.getContext('2d');
-
-const html = `
-      <p>this
-<p>is <span style="color:red; font-weight: bold;">not</span>
-<i>xml
-Now you can insert html elements to canvas and record them
-<p>
-        
-`
-Aragorn.renderHtmlToCanvas(html,ctx,0,0,1200,100)
-
-
-
+//
+//
+// // ---------------------------- Recorder Example --------------------------
+// let recorder = new Aragorn.Recorder('mainCanvas');
+// const rec = recorder.recorderGenerator();
+//
+// let recording = document.createElement('button');
+// recording.innerText = 'recording'
+// recording.setAttribute('id','recording');
+// recording.addEventListener("click", ()=>{
+//     console.log(document.querySelector('canvas'))
+//     recorder.recordFunction(1, rec, document.body)
+// })
+//
+// let stopIt = document.createElement('button');
+// stopIt.innerText = 'StopIT'
+// stopIt.setAttribute('id','stop');
+// stopIt.addEventListener("click", ()=>{
+//     recorder.recordFunction(0, rec)
+// })
+//
+// document.body.appendChild(recording)
+// document.body.appendChild(stopIt)
+//
+// // --------------------------- example of htmlToCanvas ------------------
+// let htmlcanvas = document.getElementById('canvas2');
+// var ctx = htmlcanvas.getContext('2d');
+//
+// const html = `
+//       <p>this
+// <p>is <span style="color:red; font-weight: bold;">not</span>
+// <i>xml
+// Now you can insert html elements to canvas and record them
+// <p>
+//
+// `
+// Aragorn.renderHtmlToCanvas(html,ctx,0,0,1200,100)
+//
+//
+//
