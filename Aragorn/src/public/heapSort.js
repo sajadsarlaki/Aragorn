@@ -23,7 +23,7 @@ function generatearray() {
         array_ele_label.classList.add("block_id");
         array_ele_label.innerText = value;
 
-        // Appending created elements to index.html
+        // Appending created elements to queue.html
         array_ele.appendChild(array_ele_label);
         container.appendChild(array_ele);
     }
@@ -49,7 +49,7 @@ function generate_idx() {
         array_ele_label2.classList.add("block_id3");
         array_ele_label2.innerText = i;
 
-        // Appending created elements to index.html
+        // Appending created elements to queue.html
         array_ele2.appendChild(array_ele_label2);
         count_container.appendChild(array_ele2);
     }

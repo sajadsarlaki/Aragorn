@@ -1,10 +1,9 @@
 
 let main = document.createElement('div');
 let title = document.getElementById('title');
-title.style.color = '#ffffff'
-// Aragorn.textRollIn('#title');
+Aragorn.textBounce('#title');
+Aragorn.textBounce('#title-name');
 
-main.style.border = '1px solid black';
  let input = document.createElement('input');
  input.setAttribute('type','text');
  input.setAttribute('id','input');
@@ -31,7 +30,6 @@ dequeueBtn.addEventListener("click", ()=>{
  list.setAttribute('id', 'list');
  list.style.display = 'flex';
  list.style.flexDirection = 'row';
- list.style.border = '1px solid black';
 
 main.appendChild(input);
 main.appendChild(submit);
@@ -42,7 +40,7 @@ document.body.appendChild(main);
 
 // ------------------------------- PIXI -------------------------------------
 let PIXI = Aragorn.PIXI;
-const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0xffffff });
+const app = new PIXI.Application({ width: 1700, height: 750, backgroundColor:0x000000 });
 app.view.setAttribute('id','mainCanvas');
 document.body.appendChild(app.view);
 
@@ -66,8 +64,21 @@ function addLetter(letter, parent, color,height,width , pos) {
     container.addChild(bg, text);
     parent.addChild(container);
     Aragorn.Animation.to(bg, 1, {
-        pixi: { x: height, lineWidth: 5, fillColor: 0x0088f7 }
+        pixi: { x: height, lineWidth: 5 }
     });
+    app.ticker.add(() => {
+        var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+        let timePeriod = Math.floor(Math.random() * 25);
+        if (timePeriod === 5){
+            Aragorn.Animation.to(container, 1, {
+                    pixi: {  y: pos.y + Math.random() * 10 * plusOrMinus },
+
+                },
+
+            )}
+
+    });
+
     Aragorn.Animation.to(text, 1, {
         pixi: { x: width * 1.5 , y:height/2 , lineWidth: 5 }
     });
@@ -95,10 +106,10 @@ function addArrow(color, width, height , pos, parent){
 // Define height and width
 let width = 100;
 let height = 100;
-let parent = addLetter('list', app.stage, 0xff00ff, height,width,{x: 250, y: 225});
+let parent = addLetter('list', app.stage, 0x00ffff, height,width,{x: 250, y: 100});
 function insert(item){
     if (item){
-        let container = addLetter(item, parent, 0xffffff, height,width,{x: letters.length * (width ) , y: 0});
+        let container = addLetter(item, parent, 0x00ffff, height,width,{x: letters.length * (width ) , y: 0});
         addArrow(0xff00ff, 50,50,{x:  (letters.length ) * width,y:0}, parent)
     }
     // console.log(letters.length)
@@ -123,23 +134,34 @@ const bg =  PIXI.Sprite.from('./imgs/smok.png');
 bg.position = {x:100, y:0}
 bg.width = 1500;
 bg.height = 900;
-bg.tint = 0x1100ff
+
 Aragorn.Animation.fromTo(bg, 2, {
-    pixi: { x: 0 , y:-200, lineWidth: 5, fillColor: 0x0088f7 }},{
-    pixi: { x: 100 , y:20, lineWidth: 5, fillColor: 0x0088f7 },
-    delay: 3
+    pixi: { x: 100 , y:-100, lineWidth: 5, fillColor: 0x0088f7 }},{
+    pixi: { x: 100 , y:-100, lineWidth: 5, fillColor: 0x0088f7 },
+    delay: 1
 });
+
+
+
 app.stage.addChild(bg)
 
 let elapsed = 0.0;
 app.ticker.add((delta) => {
     elapsed += delta/60;
-    // if (elapsed >= letters.length) { elapsed = 0.0; }
     console.log(letters.length)
     for (let i = 0; i < letters.length; i ++) {
         letters[i].visible = elapsed >= i;
-
     }
+    var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+
+    let timePeriod = Math.floor(Math.random() * 45);
+    if (timePeriod === 5){
+    Aragorn.Animation.to(bg, 5, {
+        pixi: {x: 100 + Math.random() * 100 * plusOrMinus, y: -100 + Math.random() * 50 * plusOrMinus , fillColor: 0x0088f7},
+
+        },
+
+)}
 
 });
 
