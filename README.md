@@ -1,5 +1,6 @@
 # Aragorn 
-Aragornjs is a JavaScript library for creative coding, with a focus on creating 2d educational contents based on webGl.
+Aragornjs is a JavaScript library for creative coding,
+with a focus on creating 2d educational contents based on webGl.
 ## Usage
   1. clone project
  ``
